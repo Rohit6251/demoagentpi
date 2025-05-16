@@ -1,69 +1,3 @@
-/* Full screen setup
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: #000;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Mount container */
-#root {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Centered content */
-.launch-container {
-  position: relative;
-  text-align: center;
-  color: #00ffff;
-}
-
-/* Logo image */
-.logo {
-  width: 220px; /* slightly larger */
-  height: auto;
-  margin-bottom: 20px;
-  z-index: 2;
-  position: relative;
-}
-
-/* Glowing highlight */
-.glow-backdrop {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% + 10px)); /* slight vertical offset */
-  width: 240px;
-  height: 240px;
-  background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, transparent 80%);
-  filter: blur(80px);
-  z-index: 1;
-  animation: glow 2s infinite ease-in-out alternate;
-  border-radius: 50%;
-}
-
-/* Glow pulse */
-@keyframes glow {
-  0% {
-    opacity: 0.4;
-    transform: translate(-50%, calc(-50% + 10px)) scale(0.95);
-  }
-  100% {
-    opacity: 0.9;
-    transform: translate(-50%, calc(-50% + 10px)) scale(1.1);
-  }
-}
-
-/* Tagline text */
-.tagline {
-  font-size: 1.2rem;
-  color: #ccc;
-} */
-
 /* Full screen setup */
 html, body {
   margin: 0;
@@ -86,13 +20,12 @@ html, body {
   position: relative;
   text-align: center;
   color: #00ffff;
-  /* make sure it can contain absolute elements */
   display: inline-block;
 }
 
 /* Logo image */
 .logo {
-  width: 220px; /* slightly larger */
+  width: 220px;
   height: auto;
   margin-bottom: 20px;
   z-index: 2;
@@ -105,13 +38,13 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80px; /* narrow for vertical highlight */
-  height: 180px; /* taller height for vertical glow */
+  width: 80px;
+  height: 180px;
   background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.8) 0%, transparent 70%);
   filter: blur(40px);
   z-index: 1;
   animation: glow 2s infinite ease-in-out alternate;
-  border-radius: 40% / 100%; /* elliptical shape */
+  border-radius: 40% / 100%;
 }
 
 /* Glow pulse animation */

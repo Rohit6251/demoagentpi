@@ -1,77 +1,105 @@
-/* Full screen setup */
+/* Reset and full-screen setup */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   background-color: #000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
 }
 
-/* Mount container */
+/* Root Flex Centering */
 #root {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-/* Centered content */
+/* Main content container */
 .launch-container {
   position: relative;
   text-align: center;
   color: #00ffff;
-  display: inline-block;
-}
-
-/* Logo image */
-.logo {
-  width: 220px;
-  height: auto;
-  margin-bottom: 20px;
   z-index: 2;
-  position: relative;
 }
 
-/* Glowing vertical highlight behind the logo */
+/* Glowing backdrop behind logo */
 .glow-backdrop {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 180px;
-  background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.8) 0%, transparent 70%);
-  filter: blur(40px);
+  transform: translate(-50%, calc(-50% + 10px));
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.7) 0%, transparent 80%);
+  filter: blur(80px);
   z-index: 1;
   animation: glow 2s infinite ease-in-out alternate;
-  border-radius: 40% / 100%;
+  border-radius: 50%;
 }
 
-/* Glow pulse animation */
+/* Glowing animation for backdrop */
 @keyframes glow {
   0% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.4;
+    transform: translate(-50%, calc(-50% + 10px)) scale(0.95);
   }
   100% {
     opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, calc(-50% + 10px)) scale(1.1);
   }
 }
 
-/* Tagline text with glow */
+/* Logo styling */
+.logo-wrapper {
+  display: inline-block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.logo {
+  width: 220px;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover effect with smooth glow around visible logo */
+.logo-wrapper.hovered .logo {
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.8))
+          drop-shadow(0 0 24px rgba(0, 255, 255, 0.5));
+  transform: scale(1.1);
+}
+
+/* Title */
+h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+/* Tagline animation */
 .tagline {
   font-size: 1.2rem;
-  color: #0ff;
-  margin-top: 10px;
-  animation: textGlow 2s infinite ease-in-out;
+  color: #ccc;
+  animation: pulseText 2.5s infinite ease-in-out;
 }
 
-@keyframes textGlow {
+@keyframes pulseText {
   0%, 100% {
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    opacity: 0.6;
   }
   50% {
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    opacity: 1;
   }
+}
+
+/* Canvas background neural network */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: #000;
 }
